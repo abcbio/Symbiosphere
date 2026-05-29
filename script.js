@@ -2,7 +2,7 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 canvas.width = 900;
-canvas.height = 600;
+canvas.height = 570;
 
 // ------------------
 // Bilder laden (PNG)
@@ -49,7 +49,7 @@ let co2 = 0.03;
 let running = false;
 
 let startTime = 0;
-const ROUND_TIME = 20;
+const ROUND_TIME = 30;
 
 // ------------------
 // ☄️ COMET STATE
@@ -96,7 +96,7 @@ class Particle {
 
   draw() {
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 15, 0, Math.PI * 2);
     ctx.fillStyle = this.color;
     ctx.fill();
   }
@@ -205,7 +205,7 @@ function startGame() {
   localStorage.setItem("playCount", plays);
 
   // ☄️ comet after 5 seconds
-  const delay = Math.random() * 40000 + 10000;; // 10-60 seconds
+  const delay = Math.random() * 80000 + 10000;; // 10-60 seconds
   setTimeout(triggerComet, delay);
 }
 
@@ -308,14 +308,14 @@ function endGame() {
 // Drawing
 // ------------------
 function drawBox(x, y, type) {
-  ctx.strokeRect(x, y, SIZE, SIZE);
+  //ctx.strokeRect(x, y, SIZE, SIZE);
 
   if (type === "empty") return;
 
   const img = images[type];
 
   if (img && img.complete) {
-    const scale = 1.1;
+    const scale = (type === "tree") ? 1.5 : 1.1;
     const w = SIZE * scale;
     const h = SIZE * scale;
     const offsetX = x + SIZE / 2 - w / 2;
@@ -339,6 +339,39 @@ function drawLeaderboard() {
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+
+  // ------------------
+  // 🌤️ SKY + HORIZON
+  // ------------------
+
+  // Sky (light blue)
+  ctx.fillStyle = "#bde0fe";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Ground (curved horizon)
+  ctx.beginPath();
+
+  // start left
+  ctx.moveTo(0, canvas.height * 0.6);
+
+  // curved horizon (higher in middle)
+  ctx.quadraticCurveTo(
+    canvas.width / 2, canvas.height * 0.4, // control point (curve peak)
+    canvas.width, canvas.height * 0.6      // end right
+  );
+
+  // close shape to bottom
+  ctx.lineTo(canvas.width, canvas.height);
+  ctx.lineTo(0, canvas.height);
+  ctx.closePath();
+
+  // green ground
+  ctx.fillStyle = "#7bc96f";
+  ctx.fill();
+
 
   o2Particles.forEach(p => {
     p.update();
