@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Ecosystem Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <style>
+  body {
+    margin: 0;              /* removes default spacing */
+    padding-top: 10px;     /* small controlled spacing */
+    text-align: center;
+    font-family: Arial;
+    background: #f5f5f5;
+  }
+
+  canvas {
+    border: 2px solid black;
+    background: white;
+  }
+
+  /* ✅ GROßE BUTTONS */
+  button {
+    margin: 10px;
+    padding: 30px 40px;   /* größer */
+    font-size: 26px;      /* deutlich größer */
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  /* ✅ UI LEISTE */
+#ui {
+  display: flex;
+  justify-content: center;
+  gap: 50px;   /* 👉 Abstand zwischen den Gruppen */
+  margin-top: 5px;
+}
+
+#ui > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;   /* 👉 kleiner Abstand INNERHALB ( + − icon ) */
+}
+
+
+  /* ✅ GROßE ICONS */
+  #ui img {
+    width: 60px;   /* vorher 40 */
+    height: 60px;
+    object-fit: scale-down;
+  }
+
+  /* ✅ START BUTTON EXTRA GROß */
+  #ui button:last-child {
+    font-size: 32px;
+    padding: 20px 50px;
+    background: green;
+    color: white;
+  }
+</style>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="ui">
+    <span id="ui-text">Click to breed:</span>
+    <div>
+      <img src="tree.png" alt="tree" onclick="add('tree')" class="icon-button">
+    </div>
+
+    <div>
+      <img src="lake.png" alt="lake" onclick="add('lake')" class="icon-button">
+    </div>
+
+    <div>
+      <img src="dino.png" alt="dino" onclick="add('dino')" class="icon-button">
+    </div>
+
+    <div>
+      <img src="bird.png" alt="bird" onclick="addBird()" class="icon-button">
+    </div>
+
+    <div>
+      <button id="startBtn" onclick="startGame()">START</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  padding-top: 10px;
+  text-align: center;
+  font-family: Arial;
+  background: #f5f5f5;
+}
+
+/* Canvas */
+canvas {
+  border: 2px solid black;
+  background: white;
+  display: block;
+  margin: 0 auto;
+}
+
+/* START button */
+button {
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  background: green;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #0a5c0a;
+  transition: all 0.1s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #084a08;
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #084a08;
+}
+
+/* UI container */
+#ui {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+/* ICON = BUTTON */
+.icon-button {
+  width: 70px;
+  height: 70px;
+  object-fit: scale-down;
+
+  cursor: pointer;
+
+  background: white;
+  border: 2px solid #333;
+  border-radius: 14px;
+
+  padding: 10px;
+
+  box-shadow: 0 4px 0 #999;
+  transition: all 0.1s ease;
+}
+
+/* Hover */
+.icon-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #777;
+}
+
+/* Click */
+.icon-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #777;
+}
+
+/* Optional colors per type */
+.icon-button[alt="tree"] {
+  background: #e6ffe6;
+}
+
+.icon-button[alt="lake"] {
+  background: #e6f2ff;
+}
+
+.icon-button[alt="dino"] {
+  background: #fff0e6;
+}
+
+.icon-button[alt="bird"] {
+  background: #f0f0ff;
+}
+
+#ui-text {
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333;
+}
